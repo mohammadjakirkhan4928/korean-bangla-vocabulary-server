@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -12,6 +12,10 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.MONGODB_URI_453038;
+
+if(uri){
+  console.log('mongoDB connected succcessfully')
+}
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -53,7 +57,6 @@ async function run() {
         res.status(500).send("An error occurred while verifying the admin");
       }
     };
-
 
     app.get("/suggestions/:partialWord", async (req, res) => {
       const { partialWord } = req.params;
