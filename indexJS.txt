@@ -284,5 +284,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`korean-word-book Server is running on port: ${port}`);
 });
-
-module.exports = app;
